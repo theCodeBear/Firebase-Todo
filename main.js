@@ -14,11 +14,11 @@ $(function() {
     fbIDs.push(data.key());
     $('tbody').append(
       '<tr id="row' + rowCount + '">' +
-      '<td><button class="complete" id="itemButton'+ (rowCount++) + '">Completed</button></td>' +
       '<td class="title">' + fbData.title + '</td>' +
       '<td class="dueDate">' + fbData.date + '</td>' +
       '<td class="priority">' + fbData.priority + '</td>' +
       '<td class="isComplete">' + fbData.isComplete + '</td>' +
+      '<td><button class="complete" id="itemButton'+ (rowCount++) + '">Completed</button></td>' +
       '</tr>');
 
     if (fbData.isComplete === 'Yes') {
@@ -43,14 +43,16 @@ $(function() {
     });
   });
 
-  // When user creates a new item, save the data of that item into the database
+  // When user creates a new item, save the data of that item into the database, reset form.
   $('#create').on('click', function() {
     var title = $('#title').val();
     var date = $('#dueDate').val();
     var priority = $('#priority').val();
-    myDataRef.push({title: title, date: date, priority: priority, isComplete: 'no'});
+    if (title && date) {
+      myDataRef.push({title: title, date: date, priority: priority, isComplete: 'no'});
+      $('#title').val('');
+      $('#dueDate').val('');
+      $('#priority').val('High');
+    }
   });
-
-  
-
 });
