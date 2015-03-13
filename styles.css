@@ -43,10 +43,11 @@ table {
   display: absolute;
   margin: 0 auto;
   max-width: 90%;
+  color: white;
 }
 
 th {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 tr:nth-child(even) {
@@ -67,7 +68,6 @@ label {
 .complete {
   background-color: transparent;
   font-weight: bold;
-  border: none;
   padding: none;
   font-size: 0.6em;
 }
